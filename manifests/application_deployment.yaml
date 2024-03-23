@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deployment
+  namespace: assignment2app
+spec:
+  selector:
+    matchLabels:
+      app: employees
+  replicas: 3
+  template:
+     metadata:
+       labels:
+         app: employees
+     spec:
+       containers:
+         - image: 921348694553.dkr.ecr.us-east-1.amazonaws.com/assignment-application:v0.1
+           name: application-container
+           ports:
+             - containerPort: 8080             
+           env:
+             - name: DBPORT
+               value: "3306"
+             - name: DBHOST
+               value: "mysql-service.assignment2db.svc.cluster.local"
+             - name: DBUSER
+               value: root
+             - name: DATABASE
+               value: employees
+             - name: DBPWD
+               value: pw
+             - name: APP_COLOR
+               value: lime
+           ports:
+             - containerPort: 8080
+             

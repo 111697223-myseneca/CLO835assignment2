@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mysql-pod
+  namespace: assignment2db
+  labels:
+    app: mysql
+spec:
+  containers:
+    - image: 921348694553.dkr.ecr.us-east-1.amazonaws.com/assignment-database:v0.1
+      name: mysql-container
+      env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: pw

@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-pod
+  namespace: assignment2app
+  labels:
+    app: employees
+spec:
+  containers:
+    - image: 921348694553.dkr.ecr.us-east-1.amazonaws.com/assignment-application:v0.1
+      name: application-container
+      ports:
+        - containerPort: 80
+      env:
+        - name: DBPORT
+          value: "3306"
+        - name: DBHOST
+          value: "mysql-service.assignment2db.svc.cluster.local"
+        - name: DBUSER
+          value: root
+        - name: DATABASE
+          value: employees
+        - name: DBPWD
+          value: pw
+        - name: APP_COLOR
+          value: lime
+      
+ 

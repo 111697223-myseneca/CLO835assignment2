@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-deployment
+  namespace: assignment2db
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+spec:
+  replicas: 3
+    spec:
+      containers:
+        - name: mysql-container
+          image: 921348694553.dkr.ecr.us-east-1.amazonaws.com/assignment-database:v0.1
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: pw
